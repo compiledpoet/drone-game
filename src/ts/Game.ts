@@ -39,6 +39,7 @@ class Game {
             if(!imgDrone){
                 imgDrone = new Image();
                 imgDrone.id = "drone";
+                imgDrone.src = "../assets/img/drone.svg";
                 (document.getElementById("container-world") as HTMLDivElement).appendChild(imgDrone);
             }
 

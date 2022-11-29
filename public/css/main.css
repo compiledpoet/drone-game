@@ -121,5 +121,14 @@ button {
 #drone {
   width: 100%;
   height: 100%;
-  background-color: red;
+  animation: drone-movement 1s linear 0s infinite alternate;
+}
+
+@keyframes drone-movement {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }
