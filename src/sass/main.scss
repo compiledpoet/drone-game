@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap');
+
+$pSmall: 8px;
+$pMini: 4px;
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing:border-box;
+}
+
+#main-container {
+    background-color: rgb(252, 252, 252);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ 
+
+
+#section-universe{
+    width: 100%;
+    height: max-content;
+    padding: $pSmall;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container-world {
+    width: 100%;
+    max-width: 60vh;
+    height: min-content;
+    aspect-ratio: 1/1;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 4px 4px rgb(214, 152, 38);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+
+#section-control-center {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $pSmall;
+}
+
+#container-control-center {
+    width: 100%;
+    max-width: 60vh;
+    height: 100%;
+    background-color: #ffffff;
+    border: black solid;
+    border-width: 1px;
+}
+
+
+
+
+.dotted {
+    background-image: radial-gradient(rgba(0,0,0,0.1) 20%, transparent 20%),
+    radial-gradient(#fafafa 20%, transparent 20%);
+ background-position: 0 0, 5px 5px;
+ background-size: 10px 10px;
+}
+
