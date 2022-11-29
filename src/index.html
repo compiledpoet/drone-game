@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drone Game</title>
-    <script src="./js/Game.js" type="module"></script>
+    <script src="./js/Main.js" type="module"></script>
     <link href="./css/main.css" rel="Stylesheet"/>
 </head>
 <body>
@@ -20,22 +20,22 @@
                 <section id="section-place">
                     <div class="labeled-input">
                     <h1>X</h1>
-                    <input class="input" type="number" min="0" max="9"/>
+                    <input id="input-place-x" class="input" type="number" min="1" max="10" value="1"/>
                 </div>
                 <div class="labeled-input">
                     <h1>Y</h1>
-                    <input class="input" type="number" min="0" max="9"/>
+                    <input id="input-place-y" class="input" type="number" min="1" max="10" value="1"/>
                 </div>
                 <div class="labeled-input">
                     <h1>Direction</h1>
-                    <select class="input" name="Direction" id="direction">
+                    <select class="input" name="Direction" id="input-place-direction">
                         <option value="javascript">North</option>
                         <option value="python">East</option>
                         <option value="c++" disabled>South</option>
                         <option value="java" selected>West</option>
                     </select>
                 </div>
-                <button>Place</button>
+                <button id="btn-set-place">Place</button>
                 </section>
                 <div class="labeled-divider">
                     <h1 class="label">MOVEMENT</h1>

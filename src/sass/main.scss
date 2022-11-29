@@ -129,6 +129,7 @@ $dMini: 5px;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
     padding: $pSmall;
+    pointer-events: none;
 }
 
 #section-report {
@@ -141,4 +142,10 @@ $dMini: 5px;
 
 button {
     padding: $pMini;
+}
+
+#drone {
+    width: 100%;
+    height: 100%;
+    background-color: red;
 }
