@@ -17,8 +17,42 @@
         </section>
         <section id="section-control-center">
             <div id="container-control-center">
-
-
+                <section id="section-place">
+                    <div class="labeled-input">
+                    <h1>X</h1>
+                    <input class="input" type="number" min="0" max="9"/>
+                </div>
+                <div class="labeled-input">
+                    <h1>Y</h1>
+                    <input class="input" type="number" min="0" max="9"/>
+                </div>
+                <div class="labeled-input">
+                    <h1>Direction</h1>
+                    <select class="input" name="Direction" id="direction">
+                        <option value="javascript">North</option>
+                        <option value="python">East</option>
+                        <option value="c++" disabled>South</option>
+                        <option value="java" selected>West</option>
+                    </select>
+                </div>
+                <button>Place</button>
+                </section>
+                <div class="labeled-divider">
+                    <h1 class="label">MOVEMENT</h1>
+                    <div class="line"></div>
+                </div>
+                <section id="section-movement">
+                    <button id="rotate-left">Rotate Left</button>
+                    <button id="rotate-right">Rotate Right</button>
+                    <button id="move">Move South</button>
+                </section>
+                <div class="labeled-divider">
+                    <h1 class="label">REPORT</h1>
+                    <div class="line"></div>
+                </div>
+                <section id="section-report">
+                    <h2 id="report">X: 0, Y: 0, Direction: South</h2>
+                </section>
             </div>
         </section>
     </div>
