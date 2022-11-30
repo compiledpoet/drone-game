@@ -11,7 +11,7 @@
     "watch:assets": "onchange './src/assets/**/*' -- npm run copy:assets",
     "watch:html": "onchange 'src/*.html' -- npm run copy:html",
     "watch:sass": "sass  --no-source-map --watch src/sass:public/css",
-    "watch:ts": "tsc -w -p",
+    "watch:ts": "tsc -w",
     "watch": "npm-run-all --parallel watch:*",
     "serve": "browser-sync start --server public --files public",
     "start": "npm-run-all copy --parallel watch serve",
@@ -23,10 +23,12 @@
     "browser-sync": "^2.27.7",
     "copyfiles": "^2.4.1",
     "cssnano": "^5.0.17",
+    "mocha": "^10.1.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss-cli": "^9.1.0",
-    "sass": "^1.49.8"
+    "sass": "^1.49.8",
+    "selenium-webdriver": "^4.6.1"
   },
   "repository": {
     "type": "git",
@@ -37,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/imcoda/drone-game/issues"
   },
-  "homepage": "https://github.com/imcoda/drone-game#readme"
+  "homepage": "https://github.com/imcoda/drone-game#readme",
+  "devDependencies": {
+    "chai": "^4.3.7"
+  }
 }
