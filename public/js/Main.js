@@ -15,6 +15,11 @@ function initMovementSection(game) {
     btnMove.addEventListener("click", () => {
         game.move();
     });
+    game.addStateListener((state) => {
+        const elemSectionMovement = document.getElementById("section-movement");
+        if (elemSectionMovement)
+            elemSectionMovement.style.pointerEvents = "all";
+    });
 }
 function initPlaceSection(game) {
     const inpX = document.getElementById("input-place-x"), inpY = document.getElementById("input-place-y"), inpDirection = document.getElementById("input-place-direction"), btnSetPlace = document.getElementById("btn-set-place");

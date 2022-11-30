@@ -1,12 +1,16 @@
 const  { Builder, By, Key,}  = require("selenium-webdriver");
 const  { describe, it } = require("mocha");
-const { should } = require("chai");
+const { should, expect } = require("chai");
 should();
 
 
 describe("Test drone placement and movement", async () => {
     const driver = new Builder().forBrowser("chrome").build();
     
+    it("doesn't execute commands until initial placement has been made", async ()=> {
+        await testIntialPlacement(driver);
+    })
+
     it("adds drone into our world", async () => {
         await testPlacement(driver, 3, 6, 3, 3, 6);
     });
@@ -22,20 +26,32 @@ describe("Test drone placement and movement", async () => {
     it("moves one space forward in the right direction", async ()=> {
         await testMove(driver);
     })
+
+    
 });
+
+async function testIntialPlacement(driver){
+    await driver.get("http://localhost:3000");
+    await moveDrone(driver, 3);
+    const notInserted = (await driver.findElements(By.id("drone"))).length == 0;
+    
+
+    expect(notInserted, "Drone has been inserted").to.be.true
+}
+
+async function moveDrone(driver, n){
+    const elemMove = await driver.findElement(By.id("move"));
+
+    for(var pos = 0; pos < n; pos++)
+        await elemMove.click();
+
+}
 
 async function testMove(driver){
     
     await placeDrone(driver, 5,5, 3); // (x:5, y:5, f:SOUTH);
-    const elemMove = await driver.findElement(By.id("move"));
-
-    elemMove.click();
-    elemMove.click();
-    elemMove.click();
-
+    await moveDrone(driver, 3);
     await assertPosition(driver, 5, 2, 3);
-
-
 }
 
 async function testMovement(driver){

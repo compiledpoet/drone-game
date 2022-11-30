@@ -1,6 +1,13 @@
 export default class Game {
     constructor() {
         this.droneState = null;
+        this.stateListeners = [];
+    }
+    addStateListener(stateListener) {
+        const index = this.stateListeners.push(stateListener) - 1;
+        return () => {
+            this.stateListeners.splice(index, 1);
+        };
     }
     rotate(deg) {
         if (this.droneState) {
@@ -38,6 +45,14 @@ export default class Game {
         this.droneState = droneState;
         this.updateUI();
     }
+    notifyStateListener() {
+        if (this.droneState) {
+            this.stateListeners.forEach(stateListener => {
+                //@ts-ignore
+                stateListener(this.droneState);
+            });
+        }
+    }
     updateUI() {
         if (this.droneState) {
             let imgDrone = document.getElementById("drone");
@@ -54,6 +69,7 @@ export default class Game {
             imgDrone.style.gridColumnStart = `${x}`;
             imgDrone.style.rotate = `${direction}deg`;
             console.log(imgDrone.style.rotate);
+            this.notifyStateListener();
         }
     }
 }

@@ -3,13 +3,23 @@ import Vector from "./Vector";
 
  
 
+export type DroneStateListener = (droneState: DroneState) => void;
 
 export default
 class Game {
     private droneState: DroneState| null;
+    private stateListeners: DroneStateListener[];
 
     constructor(){
         this.droneState = null;
+        this.stateListeners = [];
+    }
+
+    addStateListener(stateListener: DroneStateListener){
+        const index = this.stateListeners.push(stateListener) - 1;
+        return () => {
+            this.stateListeners.splice(index,1);
+        }
     }
 
     rotate(deg: number){
@@ -55,6 +65,15 @@ class Game {
         this.updateUI();
     }
 
+    private notifyStateListener(){
+        if(this.droneState){
+            this.stateListeners.forEach(stateListener => {
+                //@ts-ignore
+                stateListener(this.droneState);
+            })
+        }
+    }
+
     private updateUI(){
         if(this.droneState){
             let imgDrone: HTMLImageElement | null = document.getElementById("drone") as HTMLImageElement;
@@ -74,6 +93,8 @@ class Game {
             imgDrone.style.gridColumnStart = `${x}`;
             imgDrone.style.rotate = `${ direction }deg`
             console.log(imgDrone.style.rotate);
+            this.notifyStateListener();
+
         }
     }
 }

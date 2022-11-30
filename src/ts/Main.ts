@@ -25,6 +25,12 @@ function initMovementSection(game: Game){
         game.move();
     });
 
+    game.addStateListener((state) => {
+        const elemSectionMovement = document.getElementById("section-movement");
+        if(elemSectionMovement)
+            elemSectionMovement.style.pointerEvents = "all";
+    })
+
 
 
 
