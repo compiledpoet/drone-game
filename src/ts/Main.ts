@@ -21,6 +21,12 @@ function initMovementSection(game: Game){
         game.rotate(90);
     });
 
+    btnMove.addEventListener("click", () => {
+        game.move();
+    });
+
+
+
 
 }
 

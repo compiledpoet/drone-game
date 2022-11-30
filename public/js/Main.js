@@ -12,6 +12,9 @@ function initMovementSection(game) {
     btnRotateRight.addEventListener("click", () => {
         game.rotate(90);
     });
+    btnMove.addEventListener("click", () => {
+        game.move();
+    });
 }
 function initPlaceSection(game) {
     const inpX = document.getElementById("input-place-x"), inpY = document.getElementById("input-place-y"), inpDirection = document.getElementById("input-place-direction"), btnSetPlace = document.getElementById("btn-set-place");

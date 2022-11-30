@@ -9,6 +9,26 @@ export default class Game {
         }
         this.updateUI();
     }
+    move() {
+        if (this.droneState) {
+            const { position, direction } = this.droneState;
+            switch (direction) {
+                case 0:
+                    position.y = Math.min(10, position.y + 1);
+                    break;
+                case 90:
+                    position.x = Math.min(10, position.x + 1);
+                    break;
+                case 180:
+                    position.y = Math.max(0, position.y - 1);
+                    break;
+                case 270:
+                    position.x = Math.max(0, position.x - 1);
+                    break;
+            }
+            this.updateUI();
+        }
+    }
     setPlace(_x, _y, direction) {
         const x = limitNumber(_x, 0, 10), y = limitNumber(_y, 0, 10);
         const droneState = {
