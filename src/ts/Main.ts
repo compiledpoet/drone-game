@@ -4,10 +4,27 @@ import Game from "./Game.js"
 window.addEventListener("load", () => {
     const game: Game = new Game();
     initPlaceSection(game);
+
+    initMovementSection(game);
 })
 
+function initMovementSection(game: Game){
+    const btnRotateLeft = document.getElementById("rotate-left") as HTMLButtonElement,
+    btnRotateRight = document.getElementById("rotate-right") as HTMLButtonElement,
+    btnMove = document.getElementById("move") as HTMLButtonElement;
+
+    btnRotateLeft.addEventListener("click", () => {
+        game.rotate(-90);
+    });
+
+    btnRotateRight.addEventListener("click", () => {
+        game.rotate(90);
+    });
+
+
+}
+
 function initPlaceSection(game: Game){
-    console.log("initing...");
     const inpX = document.getElementById("input-place-x") as HTMLInputElement,
     inpY = document.getElementById("input-place-y") as HTMLInputElement,
     inpDirection = document.getElementById("input-place-direction") as HTMLSelectElement,

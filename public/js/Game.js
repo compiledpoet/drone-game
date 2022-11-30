@@ -2,6 +2,12 @@ export default class Game {
     constructor() {
         this.droneState = null;
     }
+    rotate(deg) {
+        if (this.droneState) {
+            this.droneState.direction += deg;
+        }
+        this.updateUI();
+    }
     setPlace(_x, _y, direction) {
         const x = limitNumber(_x, 0, 10), y = limitNumber(_y, 0, 10);
         const droneState = {

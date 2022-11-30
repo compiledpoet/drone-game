@@ -106,7 +106,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;
   padding: 8px;
-  pointer-events: none;
 }
 
 #section-report h2 {

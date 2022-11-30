@@ -12,6 +12,14 @@ class Game {
         this.droneState = null;
     }
 
+    rotate(deg: number){
+        if(this.droneState){
+            this.droneState.direction += deg;
+        }
+
+        this.updateUI();
+    }
+
     setPlace(_x: number, _y: number, direction: number){
         const x = limitNumber(_x, 0, 10),
         y = limitNumber(_y, 0, 10);
