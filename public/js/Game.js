@@ -1,5 +1,6 @@
 export default class Game {
     constructor() {
+        this.attackStage = 0;
         this.droneState = null;
         this.stateListeners = [];
     }
@@ -8,6 +9,80 @@ export default class Game {
         return () => {
             this.stateListeners.splice(index, 1);
         };
+    }
+    attack() {
+        if (this.droneState)
+            if (this.attackStage == 0) {
+                this.attackStage++;
+                const posProjectile = this.getProjectilePosition();
+                if (posProjectile) {
+                    const imgProjectile = new Image();
+                    imgProjectile.id = "projectile";
+                    imgProjectile.src = "../assets/img/projectile.png";
+                    document.getElementById("container-world").appendChild(imgProjectile);
+                    imgProjectile.style.gridRowStart = `${posProjectile.y}`;
+                    imgProjectile.style.gridColumnStart = `${posProjectile.x}`;
+                    imgProjectile.style.rotate = `${this.droneState.direction}deg`;
+                    setTimeout(() => {
+                        this.attackStage++;
+                        const peosProjectile = this.getProjectilePosition();
+                        console.log(peosProjectile);
+                        if (peosProjectile) {
+                            const imgProjectile = document.getElementById("projectile");
+                            imgProjectile.src = ("../assets/img/explode.png");
+                            imgProjectile.style.gridRowStart = `${peosProjectile.y}`;
+                            imgProjectile.style.gridColumnStart = `${peosProjectile.x}`;
+                            //imgProjectile.style.rotate = `${ this.droneState.direction }deg`
+                            setTimeout(() => {
+                                imgProjectile.remove();
+                                this.attackStage = 0;
+                            }, 500);
+                        }
+                    }, 500);
+                }
+                else {
+                    this.attackStage = 0;
+                }
+            }
+    }
+    getProjectilePosition() {
+        if (this.droneState) {
+            const { position, direction } = this.droneState;
+            console.log("stage", this.attackStage);
+            var _x = position.x, _y = position.y;
+            switch (direction) {
+                case 0:
+                    _y = position.y + this.attackStage;
+                    if (position.y + 2 > 10)
+                        return null;
+                    else
+                        break;
+                case 90:
+                    _x = position.x + this.attackStage;
+                    if (position.x + 2 > 10)
+                        return null;
+                    else
+                        break;
+                case 180:
+                    _y = position.y - this.attackStage;
+                    if (position.y - 2 < 0)
+                        return null;
+                    else
+                        break;
+                    break;
+                case 270:
+                    _x = position.x - this.attackStage;
+                    if (position.x - 2 < 0)
+                        return null;
+                    else
+                        break;
+                    break;
+                    break;
+            }
+            const invertedY = 11 - _y;
+            return { x: _x, y: invertedY };
+        }
+        return null;
     }
     rotate(deg) {
         if (this.droneState) {

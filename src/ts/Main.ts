@@ -1,3 +1,4 @@
+import DroneState from "./DroneState.js";
 import Game from "./Game.js"
 
  
@@ -6,12 +7,37 @@ window.addEventListener("load", () => {
     initPlaceSection(game);
 
     initMovementSection(game);
+
+    initReport(game)
 })
+
+
+function initReport(game: Game){
+    game.addStateListener(({ position: { x, y }, direction }: DroneState) => {
+        const elemReport= document.getElementById("report");
+        if(elemReport)
+        elemReport.innerHTML = `X:${ x}, Y:${ y }, Direction:${ directionToString(direction)}`
+    })
+
+}
+
+function directionToString(direction: number){
+    switch(direction){
+        case 0: return "North";
+        case 90: return "East";
+        case 180: return "South";
+        case 270: return "West"
+        default:
+            "North"
+    }
+}
 
 function initMovementSection(game: Game){
     const btnRotateLeft = document.getElementById("rotate-left") as HTMLButtonElement,
     btnRotateRight = document.getElementById("rotate-right") as HTMLButtonElement,
-    btnMove = document.getElementById("move") as HTMLButtonElement;
+    btnMove = document.getElementById("move") as HTMLButtonElement,
+    btnAttack = document.getElementById("attack") as HTMLButtonElement;
+
 
     btnRotateLeft.addEventListener("click", () => {
         game.rotate(270);
@@ -23,6 +49,10 @@ function initMovementSection(game: Game){
 
     btnMove.addEventListener("click", () => {
         game.move();
+    });
+
+    btnAttack.addEventListener("click", () => {
+        game.attack();
     });
 
     game.addStateListener((state) => {

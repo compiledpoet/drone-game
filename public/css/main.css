@@ -103,7 +103,7 @@
 
 #section-movement {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   padding: 8px;
 }
@@ -121,6 +121,11 @@ button {
   width: 100%;
   height: 100%;
   animation: drone-movement 1s linear 0s infinite alternate;
+}
+
+#projectile {
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes drone-movement {
