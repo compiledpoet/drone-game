@@ -14,7 +14,7 @@ function initMovementSection(game: Game){
     btnMove = document.getElementById("move") as HTMLButtonElement;
 
     btnRotateLeft.addEventListener("click", () => {
-        game.rotate(-90);
+        game.rotate(270);
     });
 
     btnRotateRight.addEventListener("click", () => {

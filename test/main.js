@@ -14,7 +14,32 @@ describe("Test drone placement and movement", async () => {
     it("drone is within world(10x10) boundary", async () => {
         await testPlacement(driver, 13, 20, 3, 10, 10);
     })
+
+    it("drone rotates in the correct direction", async ()=> {
+        testMovement(driver);
+    })
 });
+
+async function testMovement(driver){
+    
+    const elemLeft = await driver.findElement(By.id("rotate-left"));
+    const elemRight = await driver.findElement(By.id("rotate-right"));
+    const elemDrone = await driver.findElement(By.id("drone"));
+
+
+    const direction = await elemDrone.getCssValue("rotate");
+    const initialDirection = parseInt(direction.replace("deg", ""));
+    
+    elemLeft.click(); // +90 -> 90
+    elemLeft.click(); // +90 -> 180
+    elemRight.click();// -90 -> 90
+    elemLeft.click(); // +90 -> 180
+
+    const expectedDirection = (initialDirection + 180) % 360;
+    const currentDirection = await elemDrone.getCssValue("rotate");
+
+    currentDirection.should.equal(`${ expectedDirection }deg`);
+}
 
 async function testPlacement(driver, placeX, placeY, option, expectedX = placeX, expectedY = placeY){
     await driver.get("http://localhost:3000");

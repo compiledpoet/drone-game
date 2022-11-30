@@ -15,6 +15,7 @@ class Game {
     rotate(deg: number){
         if(this.droneState){
             this.droneState.direction += deg;
+            this.droneState.direction %= 360;
         }
 
         this.updateUI();

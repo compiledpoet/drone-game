@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 function initMovementSection(game) {
     const btnRotateLeft = document.getElementById("rotate-left"), btnRotateRight = document.getElementById("rotate-right"), btnMove = document.getElementById("move");
     btnRotateLeft.addEventListener("click", () => {
-        game.rotate(-90);
+        game.rotate(270);
     });
     btnRotateRight.addEventListener("click", () => {
         game.rotate(90);

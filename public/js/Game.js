@@ -5,6 +5,7 @@ export default class Game {
     rotate(deg) {
         if (this.droneState) {
             this.droneState.direction += deg;
+            this.droneState.direction %= 360;
         }
         this.updateUI();
     }
