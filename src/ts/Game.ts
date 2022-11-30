@@ -1,15 +1,8 @@
 import DroneState from "./DroneState";
 import Vector from "./Vector";
 
-export type Direction  = "North" | "East" | "South" | "West";
+ 
 
-const directionVectors: Record<Direction, Vector> = 
-{
-    "North": { x: 0, y: 1},
-    "East": { x: 1, y: 0},
-    "South": { x: 0, y: 1},
-    "West": { x: -1, y: 1}
-}
 
 export default
 class Game {
@@ -19,14 +12,13 @@ class Game {
         this.droneState = null;
     }
 
-    setPlace(_x: number, _y: number, direction: Direction){
-        const directionVector: Vector = directionVectors[direction];
+    setPlace(_x: number, _y: number, direction: number){
         const x = limitNumber(_x, 0, 10),
         y = limitNumber(_y, 0, 10);
 
         const droneState: DroneState = {
             position: { x, y },
-            direction: directionVector
+            direction
         }
 
         this.droneState = droneState;
@@ -47,8 +39,11 @@ class Game {
             const x = position.x,
             invertedY = 11 - position.y;
 
+            console.log(position, direction);
             imgDrone.style.gridRowStart = `${invertedY}`;
             imgDrone.style.gridColumnStart = `${x}`;
+            imgDrone.style.rotate = `${ direction }deg`
+            console.log(imgDrone.style.rotate);
         }
     }
 }

@@ -9,7 +9,7 @@ function initPlaceSection(game) {
     btnSetPlace === null || btnSetPlace === void 0 ? void 0 : btnSetPlace.addEventListener("click", () => {
         const x = parseInt(inpX === null || inpX === void 0 ? void 0 : inpX.value);
         const y = parseInt(inpY === null || inpY === void 0 ? void 0 : inpY.value);
-        const direction = inpDirection.value;
+        const direction = parseInt(inpDirection.value);
         game.setPlace(x, y, direction);
     });
 }

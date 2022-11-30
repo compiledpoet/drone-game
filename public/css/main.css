@@ -126,9 +126,9 @@ button {
 
 @keyframes drone-movement {
   0% {
-    transform: scale(1);
+    scale: 1;
   }
   100% {
-    transform: scale(1.5);
+    scale: 1.5;
   }
 }

@@ -1,4 +1,4 @@
-import Game, { Direction } from "./Game.js"
+import Game from "./Game.js"
 
  
 window.addEventListener("load", () => {
@@ -17,7 +17,7 @@ function initPlaceSection(game: Game){
     btnSetPlace?.addEventListener("click", () => {
         const x = parseInt(inpX?.value);
         const y = parseInt(inpY?.value);
-        const direction = inpDirection.value as Direction
+        const direction = parseInt(inpDirection.value);
 
         game.setPlace(x, y, direction);
     })
