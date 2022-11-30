@@ -16,7 +16,7 @@ describe("Test drone placement and movement", async () => {
     })
 
     it("drone rotates in the correct direction", async ()=> {
-        testMovement(driver);
+        await testMovement(driver);
     })
 });
 
