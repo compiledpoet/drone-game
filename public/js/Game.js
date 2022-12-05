@@ -18,7 +18,7 @@ export default class Game {
                 if (posProjectile) {
                     const imgProjectile = new Image();
                     imgProjectile.id = "projectile";
-                    imgProjectile.src = "../assets/img/projectile.png";
+                    imgProjectile.src = "../public/assets/img/projectile.png";
                     document.getElementById("container-world").appendChild(imgProjectile);
                     imgProjectile.style.gridRowStart = `${posProjectile.y}`;
                     imgProjectile.style.gridColumnStart = `${posProjectile.x}`;
@@ -29,7 +29,7 @@ export default class Game {
                         console.log(peosProjectile);
                         if (peosProjectile) {
                             const imgProjectile = document.getElementById("projectile");
-                            imgProjectile.src = ("../assets/img/explode.png");
+                            imgProjectile.src = ("../public/assets/img/explode.png");
                             imgProjectile.style.gridRowStart = `${peosProjectile.y}`;
                             imgProjectile.style.gridColumnStart = `${peosProjectile.x}`;
                             //imgProjectile.style.rotate = `${ this.droneState.direction }deg`
@@ -134,7 +134,7 @@ export default class Game {
             if (!imgDrone) {
                 imgDrone = new Image();
                 imgDrone.id = "drone";
-                imgDrone.src = "../assets/img/drone.svg";
+                imgDrone.src = "../public/assets/img/drone.svg";
                 document.getElementById("container-world").appendChild(imgDrone);
             }
             const { position, direction } = this.droneState;
